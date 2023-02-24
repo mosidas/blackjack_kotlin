@@ -12,8 +12,12 @@ class Player(n:String,m:Int){
     var isSurender:Boolean = false
     private set
 
-    fun addMoney(m:Int){
-        this.money += m
+    fun addMoney(r:Result){
+        when(r){
+            Result.Win->this.money += this.bet
+            Result.Lose->this.money -= this.bet
+            Result.Surrender->this.money -= this.bet/2
+        }
     }
 
     fun betMoney(b:Int){
